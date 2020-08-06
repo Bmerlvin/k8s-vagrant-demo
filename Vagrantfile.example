@@ -1,0 +1,11 @@
+# Example Vagrantfile.  Change as needed to accomodate local environment.
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/bionic64"
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 8192
+    v.cpus = 4
+  end
+  config.vm.provision "shell", path: "scripts/install_docker.sh"
+  config.vm.provision "shell", path: "scripts/install_kubeadm.sh"
+  config.vm.provision "shell", path: "scripts/install_calico.sh"
+end
