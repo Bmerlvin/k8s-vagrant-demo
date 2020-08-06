@@ -1,8 +1,5 @@
 #!/bin/bash
 
-USER_NAME=vagrant
-USER_HOME=/home/${USER_NAME}
-
 cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
 net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1
@@ -26,4 +23,4 @@ sudo kubeadm init --pod-network-cidr=192.168.0.0/16
 
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown -R $(id -u):$(id -g) $USER_HOME/.kube
+sudo chown -R $(id -u):$(id -g) $HOME/.kube
